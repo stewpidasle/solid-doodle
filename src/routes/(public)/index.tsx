@@ -192,7 +192,7 @@ export default function LandingPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <TerminalSquare className="h-6 w-6 text-primary" />
-                      <span className="font-bold text-lg">Boilerplate</span>
+                      <span className="font-bold text-lg">Stew Pidasle</span>
                     </div>
                   </div>
                   <nav className="flex flex-col gap-4">
@@ -200,7 +200,7 @@ export default function LandingPage() {
                     <Button asChild className="w-full justify-start" variant="ghost">
                       <a
                         className="flex items-center gap-2"
-                        href="https://github.com/YOUR_REPO_LINK"
+                        href="https://github.com/stewpid"
                         onClick={() => setMobileMenuOpen(false)}
                         rel="noopener noreferrer"
                         target="_blank"
@@ -224,12 +224,10 @@ export default function LandingPage() {
       <main className="flex-1 px-4 py-12 md:py-16 lg:py-20">
         <div className="mb-12 text-center md:mb-16">
           <h1 className="mb-4 bg-gradient-to-r from-primary via-violet-500 to-secondary bg-clip-text font-bold text-3xl text-transparent tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            Stew Pidasle Full-Stack Badass
+            Stew Pidasle - Engineer of Software         </p>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Jumpstart your next project with this feature-rich boilerplate, built with a modern, type-safe stack focused
-            on developer experience.
-          </p>
+            I don't normally tell people this but im kind of a big deal......          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -267,11 +265,10 @@ export default function LandingPage() {
         <section className="mt-16 md:mt-24">
           <div className="mb-12 text-center md:mb-16">
             <h2 className="mb-4 font-bold text-3xl tracking-tight sm:text-4xl md:text-5xl">
-              Robust Authentication Included
+              Special Skills Included
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl">
-              Secure user management features ready out-of-the-box, powered by Better Auth.
-            </p>
+              Expert code that ALWAYS works 60% of the time!             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -335,7 +332,7 @@ export default function LandingPage() {
 
       <footer className="mt-16 border-t">
         <div className="container py-6 text-center text-muted-foreground text-sm">
-          Built with Modern Tech. &copy; {new Date().getFullYear()} Your Company/Name.
+          Built with StewPidity. &copy; {new Date().getFullYear()} StewPid.
         </div>
       </footer>
     </div>
