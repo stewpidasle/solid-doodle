@@ -224,7 +224,7 @@ export default function LandingPage() {
       <main className="flex-1 px-4 py-12 md:py-16 lg:py-20">
         <div className="mb-12 text-center md:mb-16">
           <h1 className="mb-4 bg-gradient-to-r from-primary via-violet-500 to-secondary bg-clip-text font-bold text-3xl text-transparent tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            Modern Full-Stack Boilerplate
+            Stew Pidasle Full-Stack Badass
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl">
             Jumpstart your next project with this feature-rich boilerplate, built with a modern, type-safe stack focused
