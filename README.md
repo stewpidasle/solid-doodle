@@ -66,10 +66,10 @@ Choose any of these three methods for instant database setup:
 
 **Method B: CLI Script** 2. Use our built-in script for instant setup:
 
-```bash
+\`\`\`bash
 bun run db:neon-setup
 # This runs: npx neondb --yes
-```
+\`\`\`
 
 **Method C: Automatic Vite Plugin (Recommended)** 3. **Already configured!** The [`@neondatabase/vite-plugin-postgres`](https://www.npmjs.com/package/@neondatabase/vite-plugin-postgres) plugin automatically:
 
@@ -100,9 +100,9 @@ All methods create a temporary Neon database **instantly without requiring any l
 
 Copy your Neon connection string to your `.env` file:
 
-```bash
+\`\`\`bash
 DATABASE_URL=postgresql://[user]:[password]@[endpoint]/[database]?sslmode=require
-```
+\`\`\`
 
 ### Neon Features in This Boilerplate
 
@@ -167,9 +167,9 @@ The boilerplate includes integration with [Vercel's v0 API](https://vercel.com/d
 1. **Requirements:** Vercel Premium or Team plan with usage-based billing enabled
 2. **API Key:** Create an API key at [v0.dev](https://v0.dev)
 3. **Environment:** Add your v0 API key to your environment variables:
-   ```bash
+   \`\`\`bash
    V0_API_KEY=your_v0_api_key_here
-   ```
+   \`\`\`
 
 **Usage:**
 Navigate to `/dashboard/chat/vercel` to access the v0-powered chat interface. This chat is specifically optimized for web development questions and can help with:
@@ -215,7 +215,7 @@ Visit `/dashboard/tanstack-db-example` to see TanStack DB in action with a react
 
 #### 🔄 **Single Data Source, Multiple Live Views**
 
-```tsx
+\`\`\`tsx
 // One collection, three reactive views
 const { data: allTodos } = useLiveQuery((q) =>
   q.from({ todo: todoCollection }),
@@ -230,7 +230,7 @@ const { data: pending } = useLiveQuery((q) =>
     .from({ todo: todoCollection })
     .where(({ todo }) => eq(todo.completed, false)),
 );
-```
+\`\`\`
 
 #### ⚡ **Automatic Reactivity**
 
@@ -241,7 +241,7 @@ const { data: pending } = useLiveQuery((q) =>
 
 #### 🎯 **Client-Side Efficiency**
 
-```tsx
+\`\`\`tsx
 // ❌ Without TanStack DB - Multiple API calls
 const allTodos = useQuery(['todos']);
 const completedTodos = useQuery(['todos', 'completed']);
@@ -250,7 +250,7 @@ const pendingTodos = useQuery(['todos', 'pending']);
 // ✅ With TanStack DB - Single data source, multiple reactive views
 const todoCollection = createCollection(queryCollectionOptions({...}));
 // All live queries automatically sync from the same collection
-```
+\`\`\`
 
 ### Key Benefits Demonstrated
 
@@ -281,7 +281,7 @@ const todoCollection = createCollection(queryCollectionOptions({...}));
 
 The example shows how TanStack DB integrates seamlessly with your existing tRPC endpoints:
 
-```tsx
+\`\`\`tsx
 const todoCollection = createCollection(
   queryCollectionOptions<Todo>({
     queryKey: ['todos'],
@@ -293,7 +293,7 @@ const todoCollection = createCollection(
     getKey: (item) => item.id,
   }),
 );
-```
+\`\`\`
 
 ### Performance Benefits
 
@@ -346,7 +346,7 @@ Add the following configuration to your Claude Desktop config file:
 **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`  
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
-```json
+\`\`\`json
 {
   "mcpServers": {
     "your-app": {
@@ -355,13 +355,13 @@ Add the following configuration to your Claude Desktop config file:
     }
   }
 }
-```
+\`\`\`
 
 #### Cursor
 
 Add the following configuration to your Cursor MCP config file at `~/.cursor/mcp.json`:
 
-```json
+\`\`\`json
 {
   "mcpServers": {
     "your-app": {
@@ -370,7 +370,7 @@ Add the following configuration to your Cursor MCP config file at `~/.cursor/mcp
     }
   }
 }
-```
+\`\`\`
 
 ### Adding New Tools
 
@@ -378,18 +378,18 @@ To add new tools to your MCP server:
 
 1. **Define the tool function** in `src/lib/ai/mcp-tools.ts`:
 
-```typescript
+\`\`\`typescript
 const yourNewTool = async ({ param }: { param: string }) => {
   // Your tool logic here
   return {
     content: [{ type: 'text', text: `Result: ${param}` }],
   };
 };
-```
+\`\`\`
 
 2. **Add the tool to the tools array**:
 
-```typescript
+\`\`\`typescript
 export const tools = [
   // ... existing tools
   {
@@ -401,7 +401,7 @@ export const tools = [
     }),
   },
 ];
-```
+\`\`\`
 
 3. **Restart your development server** and the AI assistant to pick up the new tool.
 
@@ -441,7 +441,7 @@ Powered by [Better Auth](https://github.com/BetterTyped/better-auth), providing 
 1.  **Install Bun:**
     If you don't have Bun installed, you can install it using:
 
-    ```bash
+    \`\`\`bash
     # For macOS, Linux, and WSL
     curl -fsSL https://bun.sh/install | bash
 
@@ -450,27 +450,27 @@ Powered by [Better Auth](https://github.com/BetterTyped/better-auth), providing 
 
     # Verify installation
     bun --version
-    ```
+    \`\`\`
 
 2.  **Clone the repository:**
 
-    ```bash
+    \`\`\`bash
     git clone <repository-url>
     cd <repository-name>
-    ```
+    \`\`\`
 
 3.  **Install dependencies:**
 
-    ```bash
+    \`\`\`bash
     bun install
-    ```
+    \`\`\`
 
 4.  **Set up environment variables:**
     Copy the `.env.example` file to `.env` and configure the required values:
 
-    ```bash
+    \`\`\`bash
     cp .env.example .env
-    ```
+    \`\`\`
 
     Key environment variables to configure:
     - **Database:** Neon Postgres database (automatically configured!)
@@ -480,10 +480,10 @@ Powered by [Better Auth](https://github.com/BetterTyped/better-auth), providing 
       - **72-hour trial**: Database expires after 72 hours unless claimed with a free Neon account
       - **Auto-configured**: The plugin writes the connection string to your `.env` file automatically
     - **Auth:** Generate a secure secret for Better Auth
-      ```bash
+      \`\`\`bash
       # Generate a secure random string
       openssl rand -base64 32
-      ```
+      \`\`\`
       Add it to your `.env` file as `BETTER_AUTH_SECRET`
     - **Email:** Set up a [Resend](https://resend.com/) account for email sending
       - Get your API key and add it as `RESEND_API_KEY`
@@ -497,48 +497,48 @@ Powered by [Better Auth](https://github.com/BetterTyped/better-auth), providing 
     **Vector Extension Setup (Required for AI Features):**
     This project includes vector embeddings for AI features. The `pg_vector` extension needs to be enabled:
 
-    ```bash
+    \`\`\`bash
     # Automated setup (recommended)
     bun run db:setup-vector
-    ```
+    \`\`\`
 
     If the automated script fails, enable it manually:
     1. Open your [Neon dashboard](https://console.neon.tech)
     2. Navigate to SQL Editor
     3. Run the following query:
-       ```sql
+       \`\`\`sql
        CREATE EXTENSION vector;
-       ```
+       \`\`\`
 
     📖 **Reference:** [Neon pg_vector documentation](https://neon.tech/docs/extensions/pg_vector)
 
     **Schema Setup:**
     Push the schema (for development/initial setup):
 
-    ```bash
+    \`\`\`bash
     bun run db:push
-    ```
+    \`\`\`
 
     _For production or more controlled migrations, generate migration files:_
 
-    ```bash
+    \`\`\`bash
     # bun run db:generate
     # Apply migrations (tool/command depends on setup)
-    ```
+    \`\`\`
 
     _Optional: Use `bun run db:studio` to explore the schema via Drizzle Studio._
 
 6.  **Run the development server:**
-    ```bash
+    \`\`\`bash
     bun run dev
-    ```
+    \`\`\`
     The application should now be running on `http://localhost:3000`.
 
 ## Project Structure
 
 This project follows a structured organization pattern for better maintainability:
 
-```
+\`\`\`
 src/
 ├─ app/                   # App specific files
 ├─ components/            # Reusable UI components (including shadcn/ui)
@@ -577,7 +577,7 @@ src/
 └─ ssr.tsx                # Server-side rendering setup
 
 public/                   # Static assets
-```
+\`\`\`
 
 The structure organizes code by feature and responsibility, keeping related code together for better maintainability.
 
@@ -636,7 +636,7 @@ Test your Docker setup locally using the included Docker Compose configuration:
 
 **File:** `compose.yaml`
 
-```bash
+\`\`\`bash
 # Build and run the application in Docker
 docker-compose up --build
 
@@ -648,7 +648,7 @@ docker-compose logs -f
 
 # Stop services
 docker-compose down
-```
+\`\`\`
 
 **Configuration:**
 
