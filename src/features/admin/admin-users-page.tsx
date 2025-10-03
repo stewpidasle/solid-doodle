@@ -23,7 +23,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -160,9 +167,7 @@ function CreateUserDialog() {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create New User</DialogTitle>
-          <DialogDescription>
-            Create a new user account with the specified details.
-          </DialogDescription>
+          <DialogDescription>Create a new user account with the specified details.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -238,7 +243,7 @@ export function AdminUsersPage() {
   const { mutate: revokeUserSessions } = useRevokeUserSessions();
   const { mutate: resetPassword } = useResetUserPassword();
 
-  const currentUserRole = (session?.user?.role as UserRole) || 'user';
+  const currentUserRole = (session?.user?.role as UserRole) || "user";
 
   if (!canManageUsers(currentUserRole)) {
     return (
@@ -252,24 +257,25 @@ export function AdminUsersPage() {
     );
   }
 
-  const normalizedUsers: User[] = users?.map(user => ({
-    id: user.id,
-    name: user.name || "Unknown",
-    email: user.email,
-    role: user.role || "user",
-    emailVerified: user.emailVerified || false,
-    banned: user.banned || false,
-    createdAt: user.createdAt ? new Date(user.createdAt) : new Date(),
-    image: user.image || undefined,
-  })) || [];
+  const normalizedUsers: User[] =
+    users?.map((user) => ({
+      id: user.id,
+      name: user.name || "Unknown",
+      email: user.email,
+      role: user.role || "user",
+      emailVerified: user.emailVerified || false,
+      banned: user.banned || false,
+      createdAt: user.createdAt ? new Date(user.createdAt) : new Date(),
+      image: user.image || undefined,
+    })) || [];
 
   const filteredUsers = normalizedUsers.filter((user) => {
     const matchesSearch =
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesStatus = 
-      statusFilter === "all" || 
+    const matchesStatus =
+      statusFilter === "all" ||
       (statusFilter === "active" && user.emailVerified && !user.banned) ||
       (statusFilter === "pending" && !user.emailVerified && !user.banned) ||
       (statusFilter === "banned" && user.banned);
@@ -280,8 +286,8 @@ export function AdminUsersPage() {
   });
 
   const handleUserAction = (action: string, userId: string, userRole?: string) => {
-    const user = normalizedUsers.find(u => u.id === userId);
-    
+    const user = normalizedUsers.find((u) => u.id === userId);
+
     switch (action) {
       case "view":
         if (user) {
@@ -324,10 +330,10 @@ export function AdminUsersPage() {
 
   const stats = {
     total: normalizedUsers.length,
-    active: normalizedUsers.filter(u => u.emailVerified && !u.banned).length,
-    pending: normalizedUsers.filter(u => !u.emailVerified && !u.banned).length,
-    banned: normalizedUsers.filter(u => u.banned).length,
-    admins: normalizedUsers.filter(u => u.role === 'admin' || u.role === 'superadmin').length,
+    active: normalizedUsers.filter((u) => u.emailVerified && !u.banned).length,
+    pending: normalizedUsers.filter((u) => !u.emailVerified && !u.banned).length,
+    banned: normalizedUsers.filter((u) => u.banned).length,
+    admins: normalizedUsers.filter((u) => u.role === "admin" || u.role === "superadmin").length,
   };
 
   return (
@@ -336,9 +342,7 @@ export function AdminUsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">User Management</h1>
-          <p className="text-muted-foreground">
-            Manage users, roles, and permissions
-          </p>
+          <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={() => refetch()}>
@@ -482,7 +486,10 @@ export function AdminUsersPage() {
                         <Avatar className="h-8 w-8">
                           <AvatarImage src={user.image} alt={user.name} />
                           <AvatarFallback>
-                            {user.name.split(" ").map((n) => n[0]).join("")}
+                            {user.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
                           </AvatarFallback>
                         </Avatar>
                         <div>
@@ -494,9 +501,7 @@ export function AdminUsersPage() {
                     <TableCell>{getStatusBadge(user)}</TableCell>
                     <TableCell>{getRoleBadge(user.role)}</TableCell>
                     <TableCell>
-                      <div className="text-sm">
-                        {user.createdAt.toLocaleDateString()}
-                      </div>
+                      <div className="text-sm">{user.createdAt.toLocaleDateString()}</div>
                     </TableCell>
                     <TableCell>
                       <DropdownMenu>
@@ -517,18 +522,18 @@ export function AdminUsersPage() {
                             Revoke Sessions
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
-                          
+
                           {canSetUserRoles(currentUserRole) && (
                             <DropdownMenuItem onClick={() => handleUserAction("setRole", user.id, "admin")}>
                               <ShieldCheck className="mr-2 h-4 w-4" />
                               Make Admin
                             </DropdownMenuItem>
                           )}
-                          
+
                           <DropdownMenuSeparator />
-                          
-                          {canBanUsers(currentUserRole) && (
-                            user.banned ? (
+
+                          {canBanUsers(currentUserRole) &&
+                            (user.banned ? (
                               <DropdownMenuItem onClick={() => handleUserAction("unban", user.id)}>
                                 <CheckCircle className="mr-2 h-4 w-4" />
                                 Unban User
@@ -538,16 +543,15 @@ export function AdminUsersPage() {
                                 <UserX className="mr-2 h-4 w-4" />
                                 Ban User
                               </DropdownMenuItem>
-                            )
-                          )}
-                          
+                            ))}
+
                           {canImpersonateUsers(currentUserRole) && (
                             <DropdownMenuItem onClick={() => handleUserAction("impersonate", user.id)}>
                               <Eye className="mr-2 h-4 w-4" />
                               Impersonate
                             </DropdownMenuItem>
                           )}
-                          
+
                           {canDeleteUsers(currentUserRole) && (
                             <DropdownMenuItem
                               onClick={() => handleUserAction("delete", user.id)}

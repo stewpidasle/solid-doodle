@@ -67,7 +67,7 @@ export function ComponentOverlayLoader({
       className={cn(
         "absolute inset-0 z-10 flex items-center justify-center",
         "bg-background/80 backdrop-blur-sm",
-        className,
+        className
       )}
     >
       <div className="flex flex-col items-center gap-2">

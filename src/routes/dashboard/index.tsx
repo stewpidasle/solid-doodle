@@ -1,14 +1,14 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
-import { Loader2, Trash2 } from 'lucide-react';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
-import { useTRPC } from '@/lib/trpc/react';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { createFileRoute } from "@tanstack/react-router";
+import { Loader2, Trash2 } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { useTRPC } from "@/lib/trpc/react";
 
-export const Route = createFileRoute('/dashboard/')({
+export const Route = createFileRoute("/dashboard/")({
   component: RouteComponent,
 });
 
@@ -21,7 +21,7 @@ function RouteComponent() {
 }
 
 function TodosRoute() {
-  const [newTodoText, setNewTodoText] = useState('');
+  const [newTodoText, setNewTodoText] = useState("");
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -30,7 +30,7 @@ function TodosRoute() {
     trpc.todo.create.mutationOptions({
       onSuccess: () => {
         queryClient.invalidateQueries(trpc.todo.getAll.queryOptions());
-        setNewTodoText('');
+        setNewTodoText("");
       },
     })
   );
@@ -76,7 +76,7 @@ function TodosRoute() {
               value={newTodoText}
             />
             <Button disabled={createMutation.isPending || !newTodoText.trim()} type="submit">
-              {createMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Add'}
+              {createMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Add"}
             </Button>
           </form>
 
@@ -96,7 +96,7 @@ function TodosRoute() {
                       id={`todo-${todo.id}`}
                       onCheckedChange={() => handleToggleTodo(todo.id, todo.completed)}
                     />
-                    <label className={`${todo.completed ? 'line-through' : ''}`} htmlFor={`todo-${todo.id}`}>
+                    <label className={`${todo.completed ? "line-through" : ""}`} htmlFor={`todo-${todo.id}`}>
                       {todo.text}
                     </label>
                   </div>

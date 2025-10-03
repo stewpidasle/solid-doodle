@@ -41,6 +41,9 @@
   "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][css][graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+    "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnPaste": true,
   "emmet.showExpandedAbbreviation": "never"

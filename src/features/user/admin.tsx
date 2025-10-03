@@ -65,7 +65,7 @@ export default function AdminDashboard() {
         },
         {
           throw: true,
-        },
+        }
       );
 
       return data?.users || [];
@@ -316,7 +316,7 @@ export default function AdminDashboard() {
                         variant={"outline"}
                         className={cn(
                           "w-full justify-start text-left font-normal",
-                          !banForm.expirationDate && "text-muted-foreground",
+                          !banForm.expirationDate && "text-muted-foreground"
                         )}
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
@@ -470,7 +470,7 @@ export default function AdminDashboard() {
                                     });
                                     toast.success(t("USER_UNBANNED_SUCCESS"));
                                   },
-                                },
+                                }
                               );
                               queryClient.invalidateQueries({
                                 queryKey: ["users"],

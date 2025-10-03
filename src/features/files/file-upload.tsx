@@ -27,7 +27,7 @@ export default function UploadComponent() {
         console.log(error);
         toast.error(error.message);
       },
-    }),
+    })
   );
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

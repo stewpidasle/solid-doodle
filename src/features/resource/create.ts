@@ -17,7 +17,7 @@ export const createResource = async (input: NewResourceParams) => {
       embeddings.map((embedding) => ({
         resourceId: resource.id,
         ...embedding,
-      })),
+      }))
     )
     .returning();
 

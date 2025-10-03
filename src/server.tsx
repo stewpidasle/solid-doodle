@@ -27,7 +27,7 @@ const middleware: AnyFunctionMiddleware[] = [
     const duration = performance.now() - prev;
     // const headers = getHeaders();
     console.info(
-      `${functionId.replaceAll("_", "/").replaceAll("/ts", ".ts").replaceAll("--", " => ")} ${method} ${duration.toFixed(2)}ms`,
+      `${functionId.replaceAll("_", "/").replaceAll("/ts", ".ts").replaceAll("--", " => ")} ${method} ${duration.toFixed(2)}ms`
     );
     // console.info(headers);
     return result;

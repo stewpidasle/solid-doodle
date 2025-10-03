@@ -49,7 +49,7 @@ export const createTRPCRouter = t.router;
 const sentryMiddleware = t.middleware(
   Sentry.trpcMiddleware({
     attachRpcInput: true,
-  }),
+  })
 );
 
 export const publicProcedure = t.procedure.use(sentryMiddleware);

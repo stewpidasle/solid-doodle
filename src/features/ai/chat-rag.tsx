@@ -65,8 +65,6 @@ const ToolInvocation = ({ toolInvocation }: { toolInvocation: ToolInvocationType
   return null;
 };
 
-
-
 const Message = ({ message }: { message: MessageType }) => {
   return (
     <div className="whitespace-pre-wrap">
@@ -77,13 +75,13 @@ const Message = ({ message }: { message: MessageType }) => {
             if (part.type === "text") {
               return <p key={index}>{part.text}</p>;
             }
-            
+
             // Handle new v5 tool patterns - tools are prefixed with 'tool-'
             if (part.type.startsWith("tool-")) {
               const toolPart = part as any; // Type assertion for tool part
               const { toolCallId, state } = toolPart;
               const toolName = part.type.replace("tool-", "");
-              
+
               // Tool is completed and has output
               if (state === "output-available" && toolPart.output) {
                 if (toolName === "getInformation") {
@@ -94,7 +92,7 @@ const Message = ({ message }: { message: MessageType }) => {
                     </div>
                   );
                 }
-                
+
                 return (
                   <div key={toolCallId} className="bg-green-50 border border-green-200 rounded-lg p-3 my-2">
                     <div className="font-medium text-green-800">{toolName} completed:</div>
@@ -102,10 +100,13 @@ const Message = ({ message }: { message: MessageType }) => {
                   </div>
                 );
               }
-              
+
               // Tool is still processing
               return (
-                <div key={toolCallId || index} className="animate-pulse bg-yellow-50 border border-yellow-200 rounded-lg p-3 my-2">
+                <div
+                  key={toolCallId || index}
+                  className="animate-pulse bg-yellow-50 border border-yellow-200 rounded-lg p-3 my-2"
+                >
                   <div className="flex items-center space-x-2">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-500"></div>
                     <span className="text-yellow-700">
@@ -117,12 +118,12 @@ const Message = ({ message }: { message: MessageType }) => {
                 </div>
               );
             }
-            
+
             // Handle step indicators
             if (part.type === "step-start") {
               return null; // Don't render step indicators for cleaner UI
             }
-            
+
             return null;
           })}
         </div>

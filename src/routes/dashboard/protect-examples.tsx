@@ -1,7 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { ProtectExamples } from '@/components/protect-examples';
+import { createFileRoute } from "@tanstack/react-router";
+import { ProtectExamples } from "@/components/protect-examples";
 
-export const Route = createFileRoute('/dashboard/protect-examples')({
+export const Route = createFileRoute("/dashboard/protect-examples")({
   component: ProtectExamplesPage,
 });
 

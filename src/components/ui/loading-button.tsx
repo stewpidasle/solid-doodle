@@ -16,7 +16,7 @@ const LoadingButton = React.forwardRef<HTMLButtonElement, LoadingButtonProps>(
         {loading ? loadingText || children : children}
       </Button>
     );
-  },
+  }
 );
 
 LoadingButton.displayName = "LoadingButton";

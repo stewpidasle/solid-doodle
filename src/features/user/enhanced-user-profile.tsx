@@ -82,7 +82,8 @@ export function EnhancedUserProfile() {
             )}
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
-              Member since {session?.user?.createdAt ? new Date(session.user.createdAt).getFullYear() : new Date().getFullYear()}
+              Member since{" "}
+              {session?.user?.createdAt ? new Date(session.user.createdAt).getFullYear() : new Date().getFullYear()}
             </div>
           </div>
         </div>

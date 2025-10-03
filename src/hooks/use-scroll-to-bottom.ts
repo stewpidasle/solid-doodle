@@ -14,7 +14,7 @@ export function useScrollToBottom() {
   const { data: scrollBehavior = false, mutate: setScrollBehavior } = useSWR<ScrollFlag>(
     "messages:should-scroll",
     null,
-    { fallbackData: false },
+    { fallbackData: false }
   );
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function useScrollToBottom() {
     (scrollBehavior: ScrollBehavior = "smooth") => {
       setScrollBehavior(scrollBehavior);
     },
-    [setScrollBehavior],
+    [setScrollBehavior]
   );
 
   function onViewportEnter() {

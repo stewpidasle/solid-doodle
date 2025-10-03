@@ -1,7 +1,13 @@
 import { openai } from "@ai-sdk/openai";
 
 import { createServerFileRoute } from "@tanstack/react-start/server";
-import { experimental_generateImage as generateImage, type UIMessage, streamText, tool, convertToModelMessages } from "ai";
+import {
+  experimental_generateImage as generateImage,
+  type UIMessage,
+  streamText,
+  tool,
+  convertToModelMessages,
+} from "ai";
 import { z } from "zod";
 
 export const ServerRoute = createServerFileRoute("/api/ai/chat/image/generation").methods({
@@ -14,7 +20,7 @@ export const ServerRoute = createServerFileRoute("/api/ai/chat/image/generation"
       parts: message.parts.map((part) => {
         // Keep text parts as-is
         if (part.type === "text") return part;
-        
+
         // For tool parts, filter out large data
         if (part.type.startsWith("tool-")) {
           // If it's an image generation tool result, remove the base64 data but keep the structure
@@ -26,13 +32,13 @@ export const ServerRoute = createServerFileRoute("/api/ai/chat/image/generation"
                 // Keep prompt but remove the large base64 image data
                 prompt: toolPart.output.prompt,
                 // image: "[image data removed for context efficiency]" // Optional: add placeholder
-              }
+              },
             };
           }
           // Keep other tool parts as-is
           return part;
         }
-        
+
         // Keep other part types as-is
         return part;
       }),

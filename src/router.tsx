@@ -34,7 +34,7 @@ export const createRouter = () => {
         return <TanstackQuery.Provider queryClient={queryClient}>{props.children}</TanstackQuery.Provider>;
       },
     }),
-    queryClient,
+    queryClient
   );
 
   return router;

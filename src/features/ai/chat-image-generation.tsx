@@ -105,24 +105,24 @@ export function Chat() {
             <div key={m.id} className="whitespace-pre-wrap">
               <div key={m.id}>
                 <div className="font-bold">{m.role}</div>
-                                <div>
+                <div>
                   {m.parts.map((part, index) => {
                     console.log("🔑 Part", part);
-                    
+
                     if (part.type === "text") {
                       return <p key={index}>{part.text}</p>;
                     }
-                    
+
                     // Handle new v5 tool pattern - tools are prefixed with 'tool-'
                     if (part.type === "tool-generateImage") {
                       const toolPart = part as any; // Type assertion for tool part
                       const { toolCallId, state } = toolPart;
-                      
+
                       // Tool is completed and has output
                       if (state === "output-available" && toolPart.output) {
                         const output = toolPart.output as { image: string; prompt?: string };
                         const input = toolPart.input as { prompt?: string };
-                        
+
                         return (
                           <img
                             key={toolCallId}
@@ -135,7 +135,7 @@ export function Chat() {
                           />
                         );
                       }
-                      
+
                       // Tool is still processing (input streaming, input available, etc.)
                       return (
                         <div key={toolCallId} className="animate-pulse bg-gray-100 rounded-lg p-4">
@@ -150,12 +150,12 @@ export function Chat() {
                         </div>
                       );
                     }
-                    
+
                     // Handle step indicators
                     if (part.type === "step-start") {
                       return null; // Don't render step indicators for cleaner UI
                     }
-                    
+
                     return null;
                   })}
                 </div>

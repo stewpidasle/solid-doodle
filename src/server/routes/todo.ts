@@ -1,9 +1,9 @@
-import { eq } from 'drizzle-orm';
-import { z } from 'zod';
-import { db } from '@/lib/db';
-import { todo } from '@/lib/db/schema/todo';
+import { eq } from "drizzle-orm";
+import { z } from "zod";
+import { db } from "@/lib/db";
+import { todo } from "@/lib/db/schema/todo";
 
-import { createTRPCRouter, protectedProcedure } from '@/lib/trpc/init';
+import { createTRPCRouter, protectedProcedure } from "@/lib/trpc/init";
 
 export const todoRouter = createTRPCRouter({
   getAll: protectedProcedure.query(async () => {

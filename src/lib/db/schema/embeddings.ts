@@ -13,5 +13,5 @@ export const embeddings = pgTable(
     embedding: vector("embedding", { dimensions: 1536 }).notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
-  (table) => [index("embeddingIndex").using("hnsw", table.embedding.op("vector_cosine_ops"))],
+  (table) => [index("embeddingIndex").using("hnsw", table.embedding.op("vector_cosine_ops"))]
 );

@@ -230,7 +230,7 @@ export function OrganizationCard(props: {
                                 onError: () => {
                                   setIsRevoking(isRevoking.filter((id) => id !== invitation.id));
                                 },
-                              },
+                              }
                             );
                           }}
                         >
@@ -328,7 +328,7 @@ function CreateOrganizationDialog() {
             onError: (error) => {
               toast.error(error.message);
             },
-          },
+          }
         );
       } catch (error) {
         toast.error("An error occurred while creating organization");
@@ -513,7 +513,7 @@ function InviteMemberDialog() {
           onError: (error) => {
             toast.error(error.message);
           },
-        },
+        }
       );
     },
   });

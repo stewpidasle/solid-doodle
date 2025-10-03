@@ -36,7 +36,7 @@ const handler = async (req: Request) => {
               };
               return acc;
             },
-            {} as Record<string, { description: string }>,
+            {} as Record<string, { description: string }>
           ),
         },
       },
@@ -48,7 +48,7 @@ const handler = async (req: Request) => {
       onEvent(event) {
         console.log("🔑 Event", event);
       },
-    },
+    }
   )(req);
 };
 

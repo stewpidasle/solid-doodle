@@ -89,7 +89,7 @@ export default function UserCard(props: { activeSessions: AuthClient["$Infer"]["
           onError: (error) => {
             toast.error(error.message);
           },
-        },
+        }
       );
     },
   });
@@ -132,7 +132,7 @@ export default function UserCard(props: { activeSessions: AuthClient["$Infer"]["
             onError: (error) => {
               toast.error(error.message);
             },
-          },
+          }
         );
       } else {
         if (twoFactorVerifyURI) {
@@ -151,7 +151,7 @@ export default function UserCard(props: { activeSessions: AuthClient["$Infer"]["
                 twoFactorForm.setFieldValue("otp", "");
                 toast.error(error.message);
               },
-            },
+            }
           );
         } else {
           // Enable 2FA - get TOTP URI
@@ -164,7 +164,7 @@ export default function UserCard(props: { activeSessions: AuthClient["$Infer"]["
               onError: (error) => {
                 toast.error(error.message);
               },
-            },
+            }
           );
         }
       }
@@ -183,7 +183,7 @@ export default function UserCard(props: { activeSessions: AuthClient["$Infer"]["
         onSuccess() {
           toast.success("Verification email sent successfully");
         },
-      },
+      }
     );
   };
 
