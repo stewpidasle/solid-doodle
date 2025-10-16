@@ -7,7 +7,7 @@ import { useRef, useEffect, useState } from "react"
 interface ParticleLogoProps {
   /**
    * Text to display on the left side
-   * @default "Stew Pidasle"
+   * @default "Stew '/dodo-logo.png' Pidasle"
    */
   text?: string
   /**
